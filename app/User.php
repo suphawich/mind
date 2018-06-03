@@ -36,4 +36,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function isSuperAdmin() {
+        return $this->position === "Administrator";
+    }
 }
