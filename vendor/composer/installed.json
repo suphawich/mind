@@ -431,17 +431,17 @@
     },
     {
         "name": "filp/whoops",
-        "version": "2.1.14",
-        "version_normalized": "2.1.14.0",
+        "version": "2.2.0",
+        "version_normalized": "2.2.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/filp/whoops.git",
-            "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6"
+            "reference": "181c4502d8f34db7aed7bfe88d4f87875b8e947a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
-            "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
+            "url": "https://api.github.com/repos/filp/whoops/zipball/181c4502d8f34db7aed7bfe88d4f87875b8e947a",
+            "reference": "181c4502d8f34db7aed7bfe88d4f87875b8e947a",
             "shasum": ""
         },
         "require": {
@@ -449,19 +449,19 @@
             "psr/log": "^1.0.1"
         },
         "require-dev": {
-            "mockery/mockery": "0.9.*",
+            "mockery/mockery": "^0.9 || ^1.0",
             "phpunit/phpunit": "^4.8.35 || ^5.7",
-            "symfony/var-dumper": "^2.6 || ^3.0"
+            "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0"
         },
         "suggest": {
             "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
             "whoops/soap": "Formats errors as SOAP responses"
         },
-        "time": "2017-11-23T18:22:44+00:00",
+        "time": "2018-03-03T17:56:25+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.0-dev"
+                "dev-master": "2.1-dev"
             }
         },
         "installation-source": "dist",
@@ -542,6 +542,58 @@
             "data",
             "faker",
             "fixtures"
+        ]
+    },
+    {
+        "name": "gbrock/laravel-table",
+        "version": "0.3.4",
+        "version_normalized": "0.3.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/gbrock/laravel-table.git",
+            "reference": "de157db1842d99972ad7c8a9fe86135aaa5cfa41"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/gbrock/laravel-table/zipball/de157db1842d99972ad7c8a9fe86135aaa5cfa41",
+            "reference": "de157db1842d99972ad7c8a9fe86135aaa5cfa41",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "5.*",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.5.*"
+        },
+        "time": "2015-10-16T19:12:06+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Gbrock\\Table\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Greg Brock",
+                "email": "contact@gbrock.com",
+                "homepage": "http://gbrock.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Table functionality for Laravel models",
+        "keywords": [
+            "filtering",
+            "html",
+            "laravel",
+            "model",
+            "sorting",
+            "table"
         ]
     },
     {
@@ -1126,6 +1178,42 @@
         ]
     },
     {
+        "name": "msieprawski/resource-table",
+        "version": "v0.71",
+        "version_normalized": "0.71.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/msieprawski/resource-table.git",
+            "reference": "516581e522feb5a5ccaf7db39f80ba2576a2e3f9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/msieprawski/resource-table/zipball/516581e522feb5a5ccaf7db39f80ba2576a2e3f9",
+            "reference": "516581e522feb5a5ccaf7db39f80ba2576a2e3f9",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5",
+            "php": ">=5.4.0"
+        },
+        "time": "2015-07-10T09:13:12+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Msieprawski\\ResourceTable": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Mateusz Sieprawski",
+                "email": "crom9153@gmail.com"
+            }
+        ],
+        "description": "Alternative for Laravel DataTable"
+    },
+    {
         "name": "myclabs/deep-copy",
         "version": "1.8.0",
         "version_normalized": "1.8.0.0",
@@ -1232,17 +1320,17 @@
     },
     {
         "name": "nikic/php-parser",
-        "version": "v4.0.1",
-        "version_normalized": "4.0.1.0",
+        "version": "v4.0.2",
+        "version_normalized": "4.0.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3"
+            "reference": "35b8caf75e791ba1b2d24fec1552168d72692b12"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
-            "reference": "e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/35b8caf75e791ba1b2d24fec1552168d72692b12",
+            "reference": "35b8caf75e791ba1b2d24fec1552168d72692b12",
             "shasum": ""
         },
         "require": {
@@ -1252,7 +1340,7 @@
         "require-dev": {
             "phpunit/phpunit": "^6.5 || ^7.0"
         },
-        "time": "2018-03-25T17:35:16+00:00",
+        "time": "2018-06-03T11:33:10+00:00",
         "bin": [
             "bin/php-parse"
         ],
@@ -1728,24 +1816,24 @@
     },
     {
         "name": "phpunit/php-code-coverage",
-        "version": "6.0.5",
-        "version_normalized": "6.0.5.0",
+        "version": "6.0.7",
+        "version_normalized": "6.0.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-            "reference": "4cab20a326d14de7575a8e235c70d879b569a57a"
+            "reference": "865662550c384bc1db7e51d29aeda1c2c161d69a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/4cab20a326d14de7575a8e235c70d879b569a57a",
-            "reference": "4cab20a326d14de7575a8e235c70d879b569a57a",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/865662550c384bc1db7e51d29aeda1c2c161d69a",
+            "reference": "865662550c384bc1db7e51d29aeda1c2c161d69a",
             "shasum": ""
         },
         "require": {
             "ext-dom": "*",
             "ext-xmlwriter": "*",
             "php": "^7.1",
-            "phpunit/php-file-iterator": "^1.4.2",
+            "phpunit/php-file-iterator": "^2.0",
             "phpunit/php-text-template": "^1.2.1",
             "phpunit/php-token-stream": "^3.0",
             "sebastian/code-unit-reverse-lookup": "^1.0.1",
@@ -1759,7 +1847,7 @@
         "suggest": {
             "ext-xdebug": "^2.6.0"
         },
-        "time": "2018-05-28T11:49:20+00:00",
+        "time": "2018-06-01T07:51:50+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1793,27 +1881,27 @@
     },
     {
         "name": "phpunit/php-file-iterator",
-        "version": "1.4.5",
-        "version_normalized": "1.4.5.0",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-            "reference": "730b01bc3e867237eaac355e06a36b85dd93a8b4"
+            "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/730b01bc3e867237eaac355e06a36b85dd93a8b4",
-            "reference": "730b01bc3e867237eaac355e06a36b85dd93a8b4",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/e20525b0c2945c7c317fff95660698cb3d2a53bc",
+            "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.3"
+            "php": "^7.1"
         },
-        "time": "2017-11-27T13:52:08+00:00",
+        "time": "2018-05-28T12:13:49+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.4.x-dev"
+                "dev-master": "2.0.x-dev"
             }
         },
         "installation-source": "dist",
@@ -1829,7 +1917,7 @@
         "authors": [
             {
                 "name": "Sebastian Bergmann",
-                "email": "sb@sebastian-bergmann.de",
+                "email": "sebastian@phpunit.de",
                 "role": "lead"
             }
         ],
@@ -1987,35 +2075,35 @@
     },
     {
         "name": "phpunit/phpunit",
-        "version": "7.1.5",
-        "version_normalized": "7.1.5.0",
+        "version": "7.2.3",
+        "version_normalized": "7.2.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "ca64dba53b88aba6af32aebc6b388068db95c435"
+            "reference": "42bb8f5b2cb36483907a20f45e4cd1665c24d8a7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ca64dba53b88aba6af32aebc6b388068db95c435",
-            "reference": "ca64dba53b88aba6af32aebc6b388068db95c435",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/42bb8f5b2cb36483907a20f45e4cd1665c24d8a7",
+            "reference": "42bb8f5b2cb36483907a20f45e4cd1665c24d8a7",
             "shasum": ""
         },
         "require": {
+            "doctrine/instantiator": "^1.1",
             "ext-dom": "*",
             "ext-json": "*",
             "ext-libxml": "*",
             "ext-mbstring": "*",
             "ext-xml": "*",
-            "myclabs/deep-copy": "^1.6.1",
+            "myclabs/deep-copy": "^1.7",
             "phar-io/manifest": "^1.0.1",
             "phar-io/version": "^1.0",
             "php": "^7.1",
             "phpspec/prophecy": "^1.7",
-            "phpunit/php-code-coverage": "^6.0.1",
-            "phpunit/php-file-iterator": "^1.4.3",
+            "phpunit/php-code-coverage": "^6.0.7",
+            "phpunit/php-file-iterator": "^2.0",
             "phpunit/php-text-template": "^1.2.1",
             "phpunit/php-timer": "^2.0",
-            "phpunit/phpunit-mock-objects": "^6.1.1",
             "sebastian/comparator": "^3.0",
             "sebastian/diff": "^3.0",
             "sebastian/environment": "^3.1",
@@ -2025,21 +2113,25 @@
             "sebastian/resource-operations": "^1.0",
             "sebastian/version": "^2.0.1"
         },
+        "conflict": {
+            "phpunit/phpunit-mock-objects": "*"
+        },
         "require-dev": {
             "ext-pdo": "*"
         },
         "suggest": {
+            "ext-soap": "*",
             "ext-xdebug": "*",
             "phpunit/php-invoker": "^2.0"
         },
-        "time": "2018-04-29T15:09:19+00:00",
+        "time": "2018-06-03T06:05:05+00:00",
         "bin": [
             "phpunit"
         ],
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "7.1-dev"
+                "dev-master": "7.2-dev"
             }
         },
         "installation-source": "dist",
@@ -2064,64 +2156,6 @@
         "keywords": [
             "phpunit",
             "testing",
-            "xunit"
-        ]
-    },
-    {
-        "name": "phpunit/phpunit-mock-objects",
-        "version": "6.1.2",
-        "version_normalized": "6.1.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-            "reference": "f9756fd4f43f014cb2dca98deeaaa8ce5500a36e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/f9756fd4f43f014cb2dca98deeaaa8ce5500a36e",
-            "reference": "f9756fd4f43f014cb2dca98deeaaa8ce5500a36e",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/instantiator": "^1.0.5",
-            "php": "^7.1",
-            "phpunit/php-text-template": "^1.2.1",
-            "sebastian/exporter": "^3.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^7.0"
-        },
-        "suggest": {
-            "ext-soap": "*"
-        },
-        "time": "2018-05-29T13:54:20+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "6.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "lead"
-            }
-        ],
-        "description": "Mock Object library for PHPUnit",
-        "homepage": "https://github.com/sebastianbergmann/phpunit-mock-objects/",
-        "keywords": [
-            "mock",
             "xunit"
         ]
     },
@@ -2277,17 +2311,17 @@
     },
     {
         "name": "psy/psysh",
-        "version": "v0.9.4",
-        "version_normalized": "0.9.4.0",
+        "version": "v0.9.5",
+        "version_normalized": "0.9.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/bobthecow/psysh.git",
-            "reference": "4d969a0e08e1e05e7207c07cb4207017ecc9a331"
+            "reference": "0951e91ac04ca28cf317f3997a0adfc319e80106"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4d969a0e08e1e05e7207c07cb4207017ecc9a331",
-            "reference": "4d969a0e08e1e05e7207c07cb4207017ecc9a331",
+            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0951e91ac04ca28cf317f3997a0adfc319e80106",
+            "reference": "0951e91ac04ca28cf317f3997a0adfc319e80106",
             "shasum": ""
         },
         "require": {
@@ -2310,7 +2344,7 @@
             "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
             "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
         },
-        "time": "2018-05-22T06:48:07+00:00",
+        "time": "2018-06-02T16:39:22+00:00",
         "bin": [
             "bin/psysh"
         ],
