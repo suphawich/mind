@@ -56,23 +56,29 @@
                                      <div class="col-md-2">
                                          <label>Option</label>
                                      </div>
-                                     <div class="col-md-10 option">
-                                         <table class="table table-striped table-bordered table-sm">
-                                             <tbody>
-                                                 <tr>
-                                                     <td class="option-column">a</td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td class="option-column">b</td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td class="option-column">c</td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td class="option-column">d</td>
-                                                 </tr>
-                                             </tbody>
-                                         </table>
+                                     <div class="col-md-5 option">
+                                         <div class="row">
+                                             <table class="table table-striped table-bordered table-sm">
+                                                 <tbody>
+                                                     <tr>
+                                                         <td class="option-column">a</td>
+                                                     </tr>
+                                                     <tr>
+                                                         <td class="option-column">b</td>
+                                                     </tr>
+                                                     <tr>
+                                                         <td class="option-column">c</td>
+                                                     </tr>
+                                                     <tr>
+                                                         <td class="option-column">d</td>
+                                                     </tr>
+                                                 </tbody>
+                                             </table>
+                                         </div>
+                                         <div class="row float-right">
+                                             <button type="button" name="add_option">Add</button>
+                                             <button type="button" name="add_option">Delete</button>
+                                         </div>
                                      </div>
                                  </div>
                                  <div class="form-group row float-right">
