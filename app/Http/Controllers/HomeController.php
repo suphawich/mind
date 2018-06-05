@@ -30,22 +30,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $rows = Item::sorted()->get();
-        // $table = Table::create($rows, ['id']);
-        $table = Table::create($rows, false);
-        // $table->addColumn('full_name', 'Name');
-        // $table->addColumn('email', 'E-mail', function($model) {
-        //     return $model->rendered_detail;
-        // });
-        $table->addColumn('image_path', 'Image', function($model) {
-            return $model->rendered_image;
-        })->addClass('w-25');
-        $table->addColumn('name', 'Detail', function($model) {
-            return $model->rendered_detail;
-        });
         if (Gate::allows('login')) {
             return view('pages.administrator.home');
         }
-        return view('pages.member.home', ['table' => $table]);
+        return view('pages.member.home');
     }
 }

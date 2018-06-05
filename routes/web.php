@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/setting', 'SettingController@index');
 Route::put('/setting_items/{setting_item}', 'SettingController@updateSettingItem');
+
+Route::get('/items', 'ItemController@index');

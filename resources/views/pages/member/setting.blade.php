@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@push('style')
+<style>
+    .option {
+        font-size: 15px;
+        width: 50px;
+    }
+    .option-column {
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+</style>
+@endpush
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -25,10 +37,10 @@
                                  @csrf
                                  @method('PUT')
                                  <div class="form-group row">
-                                     <div class="col-md-4">
+                                     <div class="col-md-2">
                                          <label>Unit</label>
                                      </div>
-                                     <div class="col-md-6">
+                                     <div class="col-md-10">
                                          <select name="unit">
                                              @foreach ($units as $key => $value)
                                                  @if ($value == $setting->unit)
@@ -38,6 +50,29 @@
                                                  @endif
                                              @endforeach
                                          </select>
+                                     </div>
+                                 </div>
+                                 <div class="form-group row">
+                                     <div class="col-md-2">
+                                         <label>Option</label>
+                                     </div>
+                                     <div class="col-md-10 option">
+                                         <table class="table table-striped table-bordered table-sm">
+                                             <tbody>
+                                                 <tr>
+                                                     <td class="option-column">a</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td class="option-column">b</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td class="option-column">c</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td class="option-column">d</td>
+                                                 </tr>
+                                             </tbody>
+                                         </table>
                                      </div>
                                  </div>
                                  <div class="form-group row float-right">

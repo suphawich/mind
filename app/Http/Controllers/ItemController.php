@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Gbrock\Table\Facades\Table;
+use Msieprawski\ResourceTable\ResourceTable;
 
 use App\User;
-use App\Setting_item;
+use App\Item;
 
-class SettingController extends Controller
+class ItemController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,7 +22,7 @@ class SettingController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -28,12 +30,16 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $unit = [
-            'Centimeters' => 'cm',
-            'Meters' => 'm',
-        ];
-        $setting = User::find(Auth::user()->id)->setting_item()->first();
-        return view('pages.member.setting', ['units' => $unit, 'setting' => $setting]);
+        $rows = Item::sorted()->get();
+        $table = Table::create($rows, false);
+        $table->addColumn('image_path', 'Image', function($model) {
+            return $model->rendered_image;
+        })->addClass('w-25');
+        $table->addColumn('name', 'Detail', function($model) {
+            return $model->rendered_detail;
+        });
+        $table->setView('vendor.gbrock.tableItems');
+        return view('pages.member.item.index', ['table' => $table]);
     }
 
     /**
@@ -89,13 +95,6 @@ class SettingController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    public function updateSettingItem(Request $request, Setting_item $setting_item)
-    {
-        $setting_item->unit = $request->input('unit');
-        $setting_item->save();
-        return redirect()->back();
     }
 
     /**

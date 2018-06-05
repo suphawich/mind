@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Gbrock\Table\Traits\Sortable;
 
+
 class Item extends Model
 {
     public function user() {
@@ -39,6 +40,31 @@ class Item extends Model
     {
         // We access the following diff string with "$model->rendered_created_at"
         // return $this->created_at->diffForHumans();
-        return $this->name;
+        $detail = '<div class="row">'
+                    .'<h5>'.$this->name.'</h5>'
+                 .'</div>'
+                 .'<div class="d-flex flex-column pl-4 description">'
+                    .'<div class="row">'
+                        .'<label class="mr-2">Description:</label>'
+                        .'<label>'.$this->description.'</label>'
+                    .'</div>'
+                    .'<div class="row">'
+                        .'<label class="mr-2">Size:</label>'
+                        .'<label>'.$this->toStringSize($this->width, $this->length, $this->height).'</label>'
+                    .'</div>'
+                 .'</div>';
+        return $detail;
+    }
+
+    private function toStringSize($width, $length, $height) {
+        $user = $this->user()->first();
+        $setting_item = $user->setting_item()->first();
+        $str = number_format($width, 2)
+                .' x '
+                .number_format($length, 2)
+                .' x '
+                .number_format($height, 2)
+                .' '.$setting_item->unit;
+        return $str;
     }
 }

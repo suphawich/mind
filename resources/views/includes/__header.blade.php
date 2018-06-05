@@ -39,6 +39,9 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/items">
+                                {{ __('My Items') }}
+                            </a>
                             <a class="dropdown-item" href="/setting">
                                 {{ __('Setting') }}
                             </a>
