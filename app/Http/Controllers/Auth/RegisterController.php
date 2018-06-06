@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Setting_item;
+use App\Setting_item_option_check;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,13 +67,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'full_name' => $data['full_name'],
             'phone_number' => $data['phone_number'],
             'position' => "Member",
             'password' => Hash::make($data['password']),
+        ]);
+        $this->createComponent($user);
+        return $user;
+    }
+
+    private function createComponent($user) {
+        $setting_item = Setting_item::create([
+            'user_id' => $user->id
+        ]);
+        $sioc = Setting_item_option_check::create([
+            'setting_item_id' => $setting_item->id,
+            'name' => 'Checked'
+        ]);
+        $sioc = Setting_item_option_check::create([
+            'setting_item_id' => $setting_item->id,
+            'name' => 'Moved'
         ]);
     }
 }

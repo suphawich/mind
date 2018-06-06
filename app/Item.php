@@ -78,11 +78,11 @@ class Item extends Model
     private function toStringOptions() {
         $iocs = $this->item_option_checks()->get();
         $str = '';
-        $check = "<a href='#' class='btn btn-light btn-sub'><i class='fa fa-check'></i></a>";
-        $uncheck = "<a href='#' class='btn btn-light btn-sub-times'><i class='fa fa-times'></i></a>";
         foreach ($iocs as $ioc) {
             $sioc = $ioc->setting_item_option_check()->first();
             if ($sioc->status) {
+                $check = "<a href='/items_option_check/".$ioc->id."/checked' class='btn btn-light btn-sub'><i class='fa fa-check'></i></a>";
+                $uncheck = "<a href='/items_option_check/".$ioc->id."/unchecked' class='btn btn-light btn-sub-times'><i class='fa fa-times'></i></a>";
                 if ($ioc->status) {
                     $status = "<i class='fa fa-check-circle'></i>";
                 } else {

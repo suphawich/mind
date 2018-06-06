@@ -23,4 +23,7 @@ Route::put('/setting_items/{setting_item}', 'SettingController@updateSettingItem
 Route::post('/setting_item_option_check', 'SettingItemOptionCheckController@store');
 Route::delete('/setting_item_option_check', 'SettingItemOptionCheckController@destroy');
 
+Route::get('/items_option_check/{items_option_check}/checked', 'ItemsOptionCheckController@updateChecked');
+Route::get('/items_option_check/{items_option_check}/unchecked', 'ItemsOptionCheckController@updateUnchecked');
+
 Route::get('/items', 'ItemController@index');
