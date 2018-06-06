@@ -50,10 +50,11 @@
                             <div class="col-md-6">
                                 <div class="d-flex flex-row">
                                     <input id="width" type="text" class="form-control{{ $errors->has('width') ? ' is-invalid' : '' }}" name="width" value="{{ old('width') }}" required>
-                                    <label>x</label>
+                                    <label class="ml-2 mr-2 pt-1">x</label>
                                     <input id="length" type="text" class="form-control{{ $errors->has('length') ? ' is-invalid' : '' }}" name="length" value="{{ old('length') }}" required>
-                                    <label>x</label>
+                                    <label class="ml-2 mr-2 pt-1">x</label>
                                     <input id="height" type="text" class="form-control{{ $errors->has('height') ? ' is-invalid' : '' }}" name="height" value="{{ old('height') }}" required>
+                                    <label class="ml-2 mr-2 pt-1">{{ $setting_item->unit }}</label>
                                 </div>
 
                                 @if ($errors->has('width'))

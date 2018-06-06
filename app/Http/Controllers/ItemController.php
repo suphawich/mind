@@ -52,7 +52,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('pages.member.item.create');
+        $setting_item = Auth::user()->setting_item()->first();
+        return view('pages.member.item.create', ['setting_item' => $setting_item]);
     }
 
     /**
@@ -111,7 +112,11 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('pages.member.item.edit', ['item' => $item]);
+        $setting_item = Auth::user()->setting_item()->first();
+        return view('pages.member.item.edit', [
+            'item' => $item,
+            'setting_item' => $setting_item,
+        ]);
     }
 
     /**
