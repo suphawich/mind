@@ -109,9 +109,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item $item)
     {
-        //
+        return view('pages.member.item.edit', ['item' => $item]);
     }
 
     /**
@@ -121,9 +121,19 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Item $item)
     {
-        //
+        $item->name = $request->input('name');
+        $item->description = $request->input('description');
+        $item->width = $request->input('width');
+        $item->length = $request->input('length');
+        $item->height = $request->input('height');
+        if ($request->has(['image'])) {
+            Storage::delete('/public/images/items/'.$item->image_name);
+            $item->image_name = $request->image->store('/public/images/items');
+        }
+        $item->save();
+        return redirect('/items');
     }
 
     /**

@@ -109,8 +109,11 @@ class Item extends Model
     }
 
     private function toStringAction() {
+        $str = '<form class="" action="/items/'.$this->id.'/edit" method="get">'
+                  .'<button type="submit" class="btn btn-light"><i class="fa fa-pencil-square-o"></i></button>'
+            .'</form>';
         $confirm = "return confirm('Do you want to delete this item ?');";
-        $str = '<form class="" action="/items" method="post">'
+        $str .= '<form class="" action="/items" method="post">'
                     .'<input type="hidden" name="_token" value="'.csrf_token().'">'
                     .'<input type="hidden" name="_method" value="delete">'
                     .'<input type="hidden" name="item_id" value="'.$this->id.'">'
