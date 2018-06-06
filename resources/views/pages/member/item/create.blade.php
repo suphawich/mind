@@ -4,10 +4,21 @@
     New item
 @endsection
 
+@push('style')
+<style>
+    .size input {
+        min-width: 110px;
+    }
+    .card-body input {
+        font-size: 18px;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('New item') }}</div>
 
@@ -48,7 +59,7 @@
                             <label for="width" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
 
                             <div class="col-md-6">
-                                <div class="d-flex flex-row">
+                                <div class="d-flex flex-row size">
                                     <input id="width" type="text" class="form-control{{ $errors->has('width') ? ' is-invalid' : '' }}" name="width" value="{{ old('width') }}" required>
                                     <label class="ml-2 mr-2 pt-1">x</label>
                                     <input id="length" type="text" class="form-control{{ $errors->has('length') ? ' is-invalid' : '' }}" name="length" value="{{ old('length') }}" required>

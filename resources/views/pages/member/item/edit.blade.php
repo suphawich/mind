@@ -4,10 +4,21 @@
     Edit item
 @endsection
 
+@push('style')
+<style>
+    .size input {
+        min-width: 110px;
+    }
+    .card-body input {
+        font-size: 18px;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('Edit item') }}</div>
 
@@ -47,12 +58,12 @@
                             <label for="width" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
 
                             <div class="col-md-6">
-                                <div class="d-flex flex-row">
-                                    <input id="width" type="text" class="form-control{{ $errors->has('width') ? ' is-invalid' : '' }}" name="width" value="{{ old('width') ?? $item->width }}" required>
+                                <div class="d-flex flex-row size">
+                                    <input id="width" type="text" class="form-control{{ $errors->has('width') ? ' is-invalid' : '' }}" name="width" value="{{ old('width') ?? number_format($item->width, 2) }}" required>
                                     <label class="ml-2 mr-2 pt-1">x</label>
-                                    <input id="length" type="text" class="form-control{{ $errors->has('length') ? ' is-invalid' : '' }}" name="length" value="{{ old('length') ?? $item->length}}" required>
+                                    <input id="length" type="text" class="form-control{{ $errors->has('length') ? ' is-invalid' : '' }}" name="length" value="{{ old('length') ?? number_format($item->length, 2) }}" required>
                                     <label class="ml-2 mr-2 pt-1">x</label>
-                                    <input id="height" type="text" class="form-control{{ $errors->has('height') ? ' is-invalid' : '' }}" name="height" value="{{ old('height') ?? $item->height}}" required>
+                                    <input id="height" type="text" class="form-control{{ $errors->has('height') ? ' is-invalid' : '' }}" name="height" value="{{ old('height') ?? number_format($item->height, 2) }}" required>
                                     <label class="ml-2 mr-2 pt-1">{{ $setting_item->unit }}</label>
                                 </div>
 
