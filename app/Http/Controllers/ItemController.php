@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Gbrock\Table\Facades\Table;
 use Msieprawski\ResourceTable\ResourceTable;
 
@@ -30,7 +31,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $rows = Item::sorted()->get();
+        $rows = Auth::user()->items()->sorted()->get();
         $table = Table::create($rows, false);
         $table->addColumn('image_path', 'Image', function($model) {
             return $model->rendered_image;
