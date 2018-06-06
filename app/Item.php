@@ -53,10 +53,10 @@ class Item extends Model
     {
         // We access the following diff string with "$model->rendered_created_at"
         // return $this->created_at->diffForHumans();
-        $detail = '<div class="row">'
+        $detail = '<div class="row ml-2">'
                     .'<h5>'.$this->name.'</h5>'
                  .'</div>'
-                 .'<div class="d-flex flex-column pl-4 description">'
+                 .'<div class="d-flex flex-column ml-2 pl-4 description">'
                     .'<div class="row">'
                         .'<label class="mr-2">Description:</label>'
                         .'<label>'.$this->description.'</label>'
@@ -68,7 +68,7 @@ class Item extends Model
                     .'<div class="row">'
                         .$this->toStringOptions()
                     .'</div>'
-                    .'<div class="d-flex justify-content-end">'
+                    .'<div class="d-flex justify-content-end mt-5">'
                         .$this->toStringAction()
                     .'</div>'
                  .'</div>';
