@@ -46,6 +46,9 @@ $(document).ready(function(){
                     @endif
                 </div>
             </div> --}}
+            <div class="d-flex justify-content-end">
+                <a href="/items/create" class="btn btn-light"><i class="fa fa-plus"></i></a>
+            </div>
             {!! $table->render() !!}
         </div>
     </div>

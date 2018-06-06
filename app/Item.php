@@ -17,6 +17,15 @@ class Item extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id', 'name', 'description', 'width', 'length', 'height', 'image_name',
+    ];
+
     use SoftDeletes;
 
     /**
@@ -37,7 +46,7 @@ class Item extends Model
 
     protected function getRenderedImageAttribute()
     {
-        return '<img src="'.$this->image_path.'" width="200" height="200">';
+        return '<img src="/photos/items/'.$this->image_name.'" width="200" height="200">';
     }
 
     protected function getRenderedDetailAttribute()
@@ -88,7 +97,7 @@ class Item extends Model
                 } else {
                     $status = "<i class='fa fa-info-circle'></i>";
                 }
-                $str .= '<span tabindex="0" class="badge badge-pill badge-primary" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-html="true" data-content="'.$check.$uncheck.'">'
+                $str .= '<span tabindex="0" class="badge badge-pill badge-primary mr-2" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-html="true" data-content="'.$check.$uncheck.'">'
                             .$status.' '.$sioc->name
                         .'</span>';
             }

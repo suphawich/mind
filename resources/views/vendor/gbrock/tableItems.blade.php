@@ -50,5 +50,7 @@
 
 @if(is_object($rows) && class_basename(get_class($rows)) == 'LengthAwarePaginator')
     {{-- Collection is paginated, so render that --}}
-    {!! $rows->render() !!}
+    <div class="d-flex justify-content-center">
+        {!! $rows->render() !!}
+    </div>
 @endif

@@ -38,30 +38,33 @@ class DatabaseSeeder extends Seeder
         $setting_item = App\Setting_item::create([
             'user_id' => $user->id
         ]);
-        $item = App\Item::create([
-            'user_id' => 2,
-            'name' => 'Chair',
-            'description' => 'In living room.',
-            'width' => 77.8,
-            'length' => 107.4,
-            'height' => 76.5,
-            'image_path' => './images/items/chair.jpg',
-        ]);
         $sioc = App\Setting_item_option_check::create([
             'setting_item_id' => $setting_item->id,
             'name' => 'Checked'
         ]);
-        App\Items_option_check::create([
-            'item_id' => $item->id,
-            'setting_item_option_check_id' => $sioc->id,
-        ]);
-        $sioc = App\Setting_item_option_check::create([
+        $sioc2 = App\Setting_item_option_check::create([
             'setting_item_id' => $setting_item->id,
             'name' => 'Moved'
         ]);
-        App\Items_option_check::create([
-            'item_id' => $item->id,
-            'setting_item_option_check_id' => $sioc->id,
-        ]);
+        for ($i=0; $i < 10; $i++) {
+            $item = App\Item::create([
+                'user_id' => 2,
+                'name' => 'Chair',
+                'description' => 'In living room.',
+                'width' => 77.8,
+                'length' => 107.4,
+                'height' => 76.5,
+                'image_name' => 'chair.jpg',
+            ]);
+            App\Items_option_check::create([
+                'item_id' => $item->id,
+                'setting_item_option_check_id' => $sioc->id,
+            ]);
+            App\Items_option_check::create([
+                'item_id' => $item->id,
+                'setting_item_option_check_id' => $sioc2->id,
+            ]);
+        }
+
     }
 }

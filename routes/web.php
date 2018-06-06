@@ -27,3 +27,7 @@ Route::get('/items_option_check/{items_option_check}/checked', 'ItemsOptionCheck
 Route::get('/items_option_check/{items_option_check}/unchecked', 'ItemsOptionCheckController@updateUnchecked');
 
 Route::get('/items', 'ItemController@index');
+Route::get('/items/create', 'ItemController@create');
+Route::post('/items/create', 'ItemController@store');
+
+Route::get('/photos/items/{filename}', 'ItemController@getImageItem');

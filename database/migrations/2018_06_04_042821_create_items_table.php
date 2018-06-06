@@ -21,7 +21,7 @@ class CreateItemsTable extends Migration
             $table->unsignedDecimal('width', 9, 4);
             $table->unsignedDecimal('length', 9, 4);
             $table->unsignedDecimal('height', 9, 4);
-            $table->string('image_path');
+            $table->string('image_name');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
