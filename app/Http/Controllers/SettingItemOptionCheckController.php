@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Setting_item_option_check;
+use App\Items_option_check;
+use App\Setting_item;
 
 class SettingItemOptionCheckController extends Controller
 {
@@ -51,6 +53,16 @@ class SettingItemOptionCheckController extends Controller
         $sioc->setting_item_id = $request->input('setting_item_id');
         $sioc->name = $request->input('name');
         $sioc->save();
+
+        $setting_item = Setting_item::where('id', $request->input('setting_item_id'))->first();
+        $user = $setting_item->user()->first();
+        $items = $user->items()->get();
+        foreach ($items as $item) {
+            $ioc = new Items_option_check;
+            $ioc->item_id = $item->id;
+            $ioc->setting_item_option_check_id = $sioc->id;
+            $ioc->save();
+        }
         return redirect('/setting');
     }
 
@@ -98,6 +110,17 @@ class SettingItemOptionCheckController extends Controller
     {
         $sioc = Setting_item_option_check::where('id', $request->input('option_id'))->first();
         $sioc->delete();
+        
+        $setting_item = $sioc->setting_item()->first();
+        $user = $setting_item->user()->first();
+        $items = $user->items()->get();
+        foreach ($items as $item) {
+            $ioc = Items_option_check::where([
+                'item_id' => $item->id,
+                'setting_item_option_check_id' => $sioc->id
+            ])->first();
+            $ioc->delete();
+        }
         return redirect('/setting');
     }
 }
