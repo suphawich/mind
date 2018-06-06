@@ -132,8 +132,14 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $item = Item::where('id', $request->input('item_id'))->first();
+        $iocs = $item->item_option_checks()->get();
+        foreach ($iocs as $ioc) {
+            $ioc->delete();
+        }
+        $item->delete();
+        return redirect('/items');
     }
 }

@@ -68,6 +68,9 @@ class Item extends Model
                     .'<div class="row">'
                         .$this->toStringOptions()
                     .'</div>'
+                    .'<div class="d-flex justify-content-end">'
+                        .$this->toStringAction()
+                    .'</div>'
                  .'</div>';
         return $detail;
     }
@@ -102,6 +105,17 @@ class Item extends Model
                         .'</span>';
             }
         }
+        return $str;
+    }
+
+    private function toStringAction() {
+        $confirm = "return confirm('Do you want to delete this item ?');";
+        $str = '<form class="" action="/items" method="post">'
+                    .'<input type="hidden" name="_token" value="'.csrf_token().'">'
+                    .'<input type="hidden" name="_method" value="delete">'
+                    .'<input type="hidden" name="item_id" value="'.$this->id.'">'
+                    .'<button type="submit" class="btn btn-light" onClick="'.$confirm.'"><i class="fa fa-trash-o"></i></button>'
+              .'</form>';
         return $str;
     }
 }
