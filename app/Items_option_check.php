@@ -5,14 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Setting_item_option_check extends Model
+class Items_option_check extends Model
 {
-    public function setting_item() {
-        return $this->belongsTo('App\Setting_item');
+    public function item() {
+        return $this->belongsTo('App\Item');
     }
 
-    public function item_option_checks() {
-        return $this->hasOne('App\Items_option_check');
+    public function setting_item_option_check() {
+        return $this->belongsTo('App\Setting_item_option_check');
     }
 
     use SoftDeletes;

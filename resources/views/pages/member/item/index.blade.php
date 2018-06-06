@@ -5,7 +5,30 @@
     .description {
         font-size: 15px;
     }
+    .btn-sub {
+        padding: 3px 7px 3px 7px !important;
+        margin-right: 7px;
+        color: #B18862;
+        border-radius: 50%;
+    }
+    .btn-sub-times {
+        padding: 3px 10px 3px 10px !important;
+        margin-right: 7px;
+        color: #B18862;
+        border-radius: 50%;
+    }
 </style>
+@endpush
+
+@push('script')
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    })
+});
+</script>
 @endpush
 
 @section('content')

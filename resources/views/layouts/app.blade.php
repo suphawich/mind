@@ -39,5 +39,6 @@
     <script src="/js/journal-bs.min.js" charset="utf-8"></script>
     <script src="/js/journal.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    @stack('script')
 </body>
 </html>

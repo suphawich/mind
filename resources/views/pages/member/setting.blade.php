@@ -4,11 +4,20 @@
 <style>
     .option {
         font-size: 15px;
-        width: 50px;
     }
     .option-column {
         padding-top: 2px !important;
         padding-bottom: 2px !important;
+    }
+    .recommented {
+        font-size: 12px;
+        color: #7FC0F4;
+    }
+    .btn-sub {
+        font-size: 12px;
+        padding: 3px 5px 3px 5px !important;
+        margin-right: 7px;
+        color: #B18862;
     }
 </style>
 @endpush
@@ -58,26 +67,29 @@
                                      </div>
                                      <div class="col-md-5 option">
                                          <div class="row">
-                                             <table class="table table-striped table-bordered table-sm">
+                                             <table class="table table-striped table-bordered table-sm mb-1">
                                                  <tbody>
-                                                     <tr>
-                                                         <td class="option-column">a</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td class="option-column">b</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td class="option-column">c</td>
-                                                     </tr>
-                                                     <tr>
-                                                         <td class="option-column">d</td>
-                                                     </tr>
+                                                     @foreach ($options as $option)
+                                                         <tr>
+                                                             @if (!$option)
+                                                                 <td><input type="checkbox" value="" disabled></td>
+                                                                 <td class="recommented">{{ __('<No option, please add more option.>') }}</td>
+                                                             @else
+                                                                 @if ($option->status)
+                                                                     <td><input type="checkbox" name="options[]" value="{{ $option->id }}" checked></td>
+                                                                 @else
+                                                                     <td><input type="checkbox" name="options[]" value="{{ $option->id }}"></td>
+                                                                 @endif
+                                                                 <td>{{ $option->name }}</td>
+                                                             @endif
+                                                         </tr>
+                                                     @endforeach
                                                  </tbody>
                                              </table>
                                          </div>
                                          <div class="row float-right">
-                                             <button type="button" name="add_option">Add</button>
-                                             <button type="button" name="add_option">Delete</button>
+                                             <button type="button" name="add_option" class="btn btn-sub" data-toggle="modal" data-target="#modalAddOption"><i class="fa fa-plus"></i></button>
+                                             <button type="button" name="add_option" class="btn btn-sub" data-toggle="modal" data-target="#modalDeleteOption"><i class="fa fa-minus"></i></button>
                                          </div>
                                      </div>
                                  </div>
@@ -95,6 +107,78 @@
                              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                          </div>
                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalAddOption">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New option</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="" action="/setting_item_option_check" method="post">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="form-group row">
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name option') }}</label>
+                                    <div class="col-md-6">
+                                        <input type="hidden" name="setting_item_id" value="{{ $setting->id }}">
+                                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" required>
+
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" name="submit">Add</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalDeleteOption">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New option</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form class="" action="/setting_item_option_check" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="form-group row">
+                                    <label for="option_id" class="col-md-4 col-form-label text-md-right">{{ __('Option') }}</label>
+                                    <div class="col-md-6">
+                                        <select name="option_id">
+                                            @foreach ($options as $option)
+                                                @if ($option != false)
+                                                    <option value="{{ $option->id }}">{{ $option->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" name="submit" onClick="return confirm('Do you want to delete this option ?');">Delete</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

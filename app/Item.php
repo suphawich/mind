@@ -9,6 +9,10 @@ use Gbrock\Table\Traits\Sortable;
 
 class Item extends Model
 {
+    public function item_option_checks() {
+        return $this->hasMany('App\Items_option_check');
+    }
+
     public function user() {
         return $this->belongsTo('App\User');
     }
@@ -52,6 +56,9 @@ class Item extends Model
                         .'<label class="mr-2">Size:</label>'
                         .'<label>'.$this->toStringSize($this->width, $this->length, $this->height).'</label>'
                     .'</div>'
+                    .'<div class="row">'
+                        .$this->toStringOptions()
+                    .'</div>'
                  .'</div>';
         return $detail;
     }
@@ -65,6 +72,27 @@ class Item extends Model
                 .' x '
                 .number_format($height, 2)
                 .' '.$setting_item->unit;
+        return $str;
+    }
+
+    private function toStringOptions() {
+        $iocs = $this->item_option_checks()->get();
+        $str = '';
+        $check = "<a href='#' class='btn btn-light btn-sub'><i class='fa fa-check'></i></a>";
+        $uncheck = "<a href='#' class='btn btn-light btn-sub-times'><i class='fa fa-times'></i></a>";
+        foreach ($iocs as $ioc) {
+            $sioc = $ioc->setting_item_option_check()->first();
+            if ($sioc->status) {
+                if ($ioc->status) {
+                    $status = "<i class='fa fa-check-circle'></i>";
+                } else {
+                    $status = "<i class='fa fa-info-circle'></i>";
+                }
+                $str .= '<span tabindex="0" class="badge badge-pill badge-primary" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-html="true" data-content="'.$check.$uncheck.'">'
+                            .$status.' '.$sioc->name
+                        .'</span>';
+            }
+        }
         return $str;
     }
 }
