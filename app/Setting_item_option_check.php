@@ -24,7 +24,7 @@ class Setting_item_option_check extends Model
      * @var array
      */
     protected $fillable = [
-        'setting_item_id', 'name'
+        'setting_item_id', 'name', 'status'
     ];
 
     use SoftDeletes;

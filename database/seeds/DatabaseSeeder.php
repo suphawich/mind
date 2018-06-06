@@ -12,13 +12,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        // $user = new App\User;
-        // $user->username = "admin";
-        // $user->email = "admin@mind";
-        // $user->full_name = "Suphawich Sungkhavorn";
-        // $user->phone_number = "0836429451";
-        // $user->password = password_hash("password", PASSWORD_DEFAULT);
-        // $user->save();
         App\User::create([
             'username' => "admin",
             'email' => "admin@mind",
@@ -40,31 +33,30 @@ class DatabaseSeeder extends Seeder
         ]);
         $sioc = App\Setting_item_option_check::create([
             'setting_item_id' => $setting_item->id,
-            'name' => 'Checked'
+            'name' => 'Checked',
+            'status' => 1
         ]);
         $sioc2 = App\Setting_item_option_check::create([
             'setting_item_id' => $setting_item->id,
-            'name' => 'Moved'
+            'name' => 'Moved',
+            'status' => 1
         ]);
-        for ($i=0; $i < 10; $i++) {
-            $item = App\Item::create([
-                'user_id' => 2,
-                'name' => 'Chair',
-                'description' => 'In living room.',
-                'width' => 77.8,
-                'length' => 107.4,
-                'height' => 76.5,
-                'image_name' => 'chair.jpg',
-            ]);
-            App\Items_option_check::create([
-                'item_id' => $item->id,
-                'setting_item_option_check_id' => $sioc->id,
-            ]);
-            App\Items_option_check::create([
-                'item_id' => $item->id,
-                'setting_item_option_check_id' => $sioc2->id,
-            ]);
-        }
-
+        $item = App\Item::create([
+            'user_id' => $user->id,
+            'name' => 'Chair',
+            'description' => 'In living room.',
+            'width' => 77.8,
+            'length' => 107.4,
+            'height' => 76.5,
+            'image_name' => 'chair.jpg',
+        ]);
+        App\Items_option_check::create([
+            'item_id' => $item->id,
+            'setting_item_option_check_id' => $sioc->id,
+        ]);
+        App\Items_option_check::create([
+            'item_id' => $item->id,
+            'setting_item_option_check_id' => $sioc2->id,
+        ]);
     }
 }
