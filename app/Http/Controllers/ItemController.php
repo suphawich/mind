@@ -104,6 +104,13 @@ class ItemController extends Controller
         //
     }
 
+    public function filter(Request $request) {
+        $search = $request->input('search');
+        $items = Auth::user()->items();
+        $items = $items->where('name', 'LIKE', '%'.$search.'%')->get();
+        return view('pages.member.items.index');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

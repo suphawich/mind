@@ -31,13 +31,13 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#furniture">Furniture</a>
+                            <a class="nav-link active" data-toggle="tab" href="#furniture">Items</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+                            <a class="nav-link" data-toggle="tab" href="#menu1">Display</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                            <a class="nav-link" data-toggle="tab" href="#menu2">Account</a>
                        </li>
                      </ul>
                      <div class="tab-content">
@@ -99,11 +99,11 @@
                              </form>
                          </div>
                          <div id="menu1" class="container tab-pane fade"><br>
-                             <h3>Menu 1</h3>
+                             <h3>Display</h3>
                              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                          </div>
                          <div id="menu2" class="container tab-pane fade"><br>
-                             <h3>Menu 2</h3>
+                             <h3>Account</h3>
                              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                          </div>
                      </div>

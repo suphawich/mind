@@ -29,6 +29,7 @@ Route::get('/items_option_check/{items_option_check}/unchecked', 'ItemsOptionChe
 Route::get('/items', 'ItemController@index');
 Route::get('/items/create', 'ItemController@create');
 Route::post('/items/create', 'ItemController@store');
+Route::get('/items/search', 'ItemController@filter');
 Route::get('/items/{item}/edit', 'ItemController@edit');
 Route::post('/items/{item}/update', 'ItemController@update');
 Route::delete('/items', 'ItemController@destroy');
