@@ -111,8 +111,11 @@ class SettingController extends Controller
 
     public function updateSettingItem(Request $request, Setting_item $setting_item)
     {
+        $this->updateSizeItems($request->input('unit'), $setting_item);
+
         $setting_item->unit = $request->input('unit');
         $setting_item->save();
+
         $allOptions = $setting_item->item_option_checks()->get();
         $this->updateSettingItemOptionChecks($allOptions, $request->input('options') ?? []);
         return redirect()->back();
@@ -128,6 +131,28 @@ class SettingController extends Controller
                 }
             }
             $option->save();
+        }
+    }
+
+    private function updateSizeItems($unit, $setting_item) {
+        $items = Auth::user()->items()->get();
+        if ($setting_item->unit != $unit) {
+            foreach ($items as $item) {
+                if ($setting_item->unit == 'cm') {
+                    if ($unit == 'm') {
+                        $item->width = bcdiv($item->width, 100, 4);
+                        $item->length = bcdiv($item->length, 100, 4);
+                        $item->height = bcdiv($item->height, 100, 4);
+                    }
+                } else if ($setting_item->unit == 'm') {
+                    if ($unit == 'cm') {
+                        $item->width = $item->width*100;
+                        $item->length = $item->length*100;
+                        $item->height = $item->height*100;
+                    }
+                }
+                $item->save();
+            }
         }
     }
 

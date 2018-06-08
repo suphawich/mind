@@ -18,9 +18,9 @@ class CreateItemsTable extends Migration
             $table->unsignedinteger('user_id');
             $table->string('name');
             $table->string('description');
-            $table->unsignedDecimal('width', 9, 4);
-            $table->unsignedDecimal('length', 9, 4);
-            $table->unsignedDecimal('height', 9, 4);
+            $table->unsignedDecimal('width', 10, 6);
+            $table->unsignedDecimal('length', 10, 6);
+            $table->unsignedDecimal('height', 10, 6);
             $table->string('image_name');
             $table->timestamps();
 

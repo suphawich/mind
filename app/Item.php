@@ -42,7 +42,7 @@ class Item extends Model
      *
      * @var array
      */
-    protected $sortable = ['email'];
+    protected $sortable = ['name'];
 
     protected function getRenderedImageAttribute()
     {

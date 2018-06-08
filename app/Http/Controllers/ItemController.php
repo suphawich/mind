@@ -33,7 +33,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $rows = Auth::user()->items()->sorted()->paginate(5);
+        $rows = Auth::user()->items()->orderBy('id', 'desc')->sorted()->paginate(5);
         $table = Table::create($rows, false);
         $table->addColumn('image_path', 'Image', function($model) {
             return $model->rendered_image;
@@ -107,8 +107,16 @@ class ItemController extends Controller
     public function filter(Request $request) {
         $search = $request->input('search');
         $items = Auth::user()->items();
-        $items = $items->where('name', 'LIKE', '%'.$search.'%')->get();
-        return view('pages.member.items.index');
+        $rows = $items->where('name', 'LIKE', '%'.$search.'%')->sorted()->paginate(5);
+        $table = Table::create($rows, false);
+        $table->addColumn('image_path', 'Image', function($model) {
+            return $model->rendered_image;
+        })->addClass('w-25');
+        $table->addColumn('name', 'Detail', function($model) {
+            return $model->rendered_detail;
+        });
+        $table->setView('vendor.gbrock.tableItems');
+        return view('pages.member.item.index', ['table' => $table]);
     }
 
     /**
