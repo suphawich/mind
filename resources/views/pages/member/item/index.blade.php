@@ -24,7 +24,7 @@
         background-color: #A1EFE2;
     }
     .filter input {
-        line-height: 30px;
+        line-height: 40px;
         min-width: 400px;
     }
     .badge {
