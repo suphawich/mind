@@ -34,6 +34,11 @@ class ItemController extends Controller
     public function index()
     {
         $rows = Auth::user()->items()->orderBy('id', 'desc')->sorted()->paginate(5);
+        $table = $this->createTable($rows);
+        return view('pages.member.item.index', ['table' => $table]);
+    }
+
+    private function createTable($rows) {
         $table = Table::create($rows, false);
         $table->addColumn('image_path', 'Image', function($model) {
             return $model->rendered_image;
@@ -42,7 +47,7 @@ class ItemController extends Controller
             return $model->rendered_detail;
         });
         $table->setView('vendor.gbrock.tableItems');
-        return view('pages.member.item.index', ['table' => $table]);
+        return $table;
     }
 
     /**
@@ -107,15 +112,8 @@ class ItemController extends Controller
     public function filter(Request $request) {
         $search = $request->input('search');
         $items = Auth::user()->items();
-        $rows = $items->where('name', 'LIKE', '%'.$search.'%')->sorted()->paginate(5);
-        $table = Table::create($rows, false);
-        $table->addColumn('image_path', 'Image', function($model) {
-            return $model->rendered_image;
-        })->addClass('w-25');
-        $table->addColumn('name', 'Detail', function($model) {
-            return $model->rendered_detail;
-        });
-        $table->setView('vendor.gbrock.tableItems');
+        $rows = $items->where('name', 'LIKE', '%'.$search.'%')->orderBy('id', 'desc')->sorted()->paginate(5);
+        $table = $this->createTable($rows);
         return view('pages.member.item.index', ['table' => $table]);
     }
 

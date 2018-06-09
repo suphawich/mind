@@ -54,7 +54,13 @@ class SettingItemOptionCheckController extends Controller
         $sioc->name = $request->input('name');
         $sioc->save();
 
-        $setting_item = Setting_item::where('id', $request->input('setting_item_id'))->first();
+        $this->storeItemsOptionCheck($request->input('setting_item_id'));
+
+        return redirect('/setting');
+    }
+
+    private function storeItemsOptionCheck($setting_item_id) {
+        $setting_item = Setting_item::where('id', $setting_item_id)->first();
         $user = $setting_item->user()->first();
         $items = $user->items()->get();
         foreach ($items as $item) {
@@ -63,7 +69,6 @@ class SettingItemOptionCheckController extends Controller
             $ioc->setting_item_option_check_id = $sioc->id;
             $ioc->save();
         }
-        return redirect('/setting');
     }
 
     /**
@@ -110,7 +115,13 @@ class SettingItemOptionCheckController extends Controller
     {
         $sioc = Setting_item_option_check::where('id', $request->input('option_id'))->first();
         $sioc->delete();
+
+        $this->destroyItemsOptionCheck($sioc);
         
+        return redirect('/setting');
+    }
+
+    private function destroyItemsOptionCheck($sioc) {
         $setting_item = $sioc->setting_item()->first();
         $user = $setting_item->user()->first();
         $items = $user->items()->get();
@@ -121,6 +132,5 @@ class SettingItemOptionCheckController extends Controller
             ])->first();
             $ioc->delete();
         }
-        return redirect('/setting');
     }
 }
