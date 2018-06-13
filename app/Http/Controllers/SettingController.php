@@ -30,8 +30,9 @@ class SettingController extends Controller
     public function index()
     {
         $unit = [
-            'Centimeters' => 'cm',
-            'Meters' => 'm',
+            'Centimetre' => 'cm',
+            'Metre' => 'm',
+            'Inch' => 'inch'
         ];
 
         $setting = User::find(Auth::user()->id)->setting_item()->first();
@@ -143,12 +144,30 @@ class SettingController extends Controller
                         $item->width = bcdiv($item->width, 100, 4);
                         $item->length = bcdiv($item->length, 100, 4);
                         $item->height = bcdiv($item->height, 100, 4);
+                    } else if ($unit == 'inch') {
+                        $item->width = bcdiv($item->width, 2.54, 4);
+                        $item->length = bcdiv($item->length, 2.54, 4);
+                        $item->height = bcdiv($item->height, 2.54, 4);
                     }
                 } else if ($setting_item->unit == 'm') {
                     if ($unit == 'cm') {
                         $item->width = $item->width*100;
                         $item->length = $item->length*100;
                         $item->height = $item->height*100;
+                    } else if ($unit == 'inch') {
+                        $item->width = $item->width*39.3701;
+                        $item->length = $item->length*39.3701;
+                        $item->height = $item->height*39.3701;
+                    }
+                } else if ($setting_item->unit == 'inch') {
+                    if ($unit == 'cm') {
+                        $item->width = $item->width*2.54;
+                        $item->length = $item->length*2.54;
+                        $item->height = $item->height*2.54;
+                    } else if ($unit == 'm') {
+                        $item->width = $item->width*0.0254;
+                        $item->length = $item->length*0.0254;
+                        $item->height = $item->height*0.0254;
                     }
                 }
                 $item->save();

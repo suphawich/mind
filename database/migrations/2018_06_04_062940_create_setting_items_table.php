@@ -17,7 +17,7 @@ class CreateSettingItemsTable extends Migration
             $table->increments('id');
             $table->unsignedinteger('user_id');
             $table->enum('unit', [
-                'cm', 'm'
+                'cm', 'm', 'inch'
             ]);
             $table->timestamps();
 
